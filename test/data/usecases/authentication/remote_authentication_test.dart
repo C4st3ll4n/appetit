@@ -28,7 +28,7 @@ void main() {
   
   void _mockHttpError(HttpError httpError)=> _mockRequest().thenThrow(httpError);
   
-  Map _mockValidData() => {"accessToken": faker.guid.guid(), "name": faker.person.name()};
+  Map _mockValidData() => {"accessToken":"QWERTYYTREWQ", "name": faker.person.name()};
   
   
 

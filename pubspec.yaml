@@ -11,7 +11,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_secure_storage:
   http:
   provider:
   equatable:
