@@ -321,7 +321,7 @@ void main() {
 
       sut.navigateToStream.listen(
         expectAsync1(
-          (page) => expect(page, "/surveys"),
+          (page) => expect(page, "/orders"),
         ),
       );
 
