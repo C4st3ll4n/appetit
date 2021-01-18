@@ -10,23 +10,25 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
-            child: Text(
-              "Olá, ${faker.person.firstName()} !",
-              textAlign: TextAlign.start,
-              style: TextStyle(
-                  decoration: TextDecoration.underline,
-                  decorationStyle: TextDecorationStyle.solid,
-                  decorationColor: Colors.green),
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+              child: Text(
+                "Olá, ${faker.person.firstName()} !",
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                    decoration: TextDecoration.underline,
+                    decorationStyle: TextDecorationStyle.solid,
+                    decorationColor: Colors.green),
+              ),
             ),
-          ),
-          
-          
-        ],
+            
+            
+          ],
+        ),
       ),
     );
   }
