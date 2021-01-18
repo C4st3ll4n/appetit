@@ -21,7 +21,7 @@ class App extends StatelessWidget {
 
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Apettite",
+      title: "Apettit",
       initialRoute: "/login",
       theme: appTheme(),
       getPages: [

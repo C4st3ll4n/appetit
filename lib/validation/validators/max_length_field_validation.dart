@@ -14,6 +14,6 @@ class MaxLengthFieldValidation extends Equatable implements FieldValidation {
 	@override
 	String validate(String value) {
 		if (value != null && value.trim().isNotEmpty && value.length >= maxLength) return null;
-		return "Campo muito grande";
+		return "Campo deve possuir no máximo $maxLength caractéres";
 	}
 }
