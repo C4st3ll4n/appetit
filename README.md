@@ -52,8 +52,18 @@ Os padrões de design utilizados foram:
 
 O projeto possue testes unitários e testes de widget
 Para realizer os testes basta seguir a "receita":
-```dart
+```flutter
 flutter pub get
 flutter test
 ```
 
+
+### APK
+
+O apk fica disponível para download em:
+
+
+### Screenshots e vídeo de utilizaçaõ
+
+O vídeo fica disponível em:
+Os prints das telas ficam disponível em:
