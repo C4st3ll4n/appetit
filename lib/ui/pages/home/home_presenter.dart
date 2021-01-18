@@ -1,4 +1,9 @@
+import 'package:fappetite/domain/entities/entities.dart';
+
 abstract class HomePresenter{
+	
+	Stream<List> get dataStream;
+
 	Stream<String> get searchStream;
 	
 	Stream<String> get searchErrorStream;
@@ -10,4 +15,6 @@ abstract class HomePresenter{
 	void dispose();
 	
 	Future<void> search();
+
+  void newSearch(String value);
 }

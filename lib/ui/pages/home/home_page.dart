@@ -1,7 +1,12 @@
 import 'package:faker/faker.dart';
+import 'package:fappetite/components/components.dart';
+import 'package:fappetite/ui/pages/home/components/new_order.dart';
 import 'package:fappetite/ui/pages/home/components/welcome_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
+import 'package:provider/provider.dart';
 
+import 'components/search_field.dart';
 import 'home_presenter.dart';
 
 class HomePage extends StatelessWidget {
@@ -13,15 +18,61 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
-              child: WelcomeText(name: faker.person.firstName(),)
-            ),
-            
-            
-          ],
+        body: Builder(
+          builder: (BuildContext contexto) {
+            presenter.isLoadingStream.listen(
+              (isLoading) {
+                if (isLoading) {
+                  showSimpleLoading(contexto);
+                } else {
+                  hideLoading(contexto);
+                }
+              },
+            );
+            presenter.searchErrorStream.listen((error) {
+              if (error != null && error.trim().isNotEmpty) {
+                showErrorMessage(contexto, error);
+              }
+            });
+            presenter.navigateToStream.listen((page) {
+              if (page != null && page.trim().isNotEmpty) {
+                Get.offAllNamed(page);
+              }
+            });
+
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 80,
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+                  child: WelcomeText(
+                    name: faker.person.firstName(),
+                  ),
+                ),
+                Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 18),
+                    child: NewOrder()),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 18),
+                  child: Provider(
+                      create: (BuildContext context) => presenter,
+                      child: SearchInput(),),
+                ),
+                StreamBuilder(
+                stream: presenter.dataStream,
+                builder: (BuildContext bc, data){
+                  return Text("$data");
+                }),
+              ],
+            );
+          },
         ),
       ),
     );

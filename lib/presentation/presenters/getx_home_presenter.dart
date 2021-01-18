@@ -17,7 +17,7 @@ class GetXHomePresenter extends GetxController implements HomePresenter {
   var _searchError = RxString();
   var _search = RxString();
   var _navigateTo = RxString();
-
+  var _dataStream = RxList([]);
   var _isLoading = false.obs;
 
 
@@ -28,7 +28,7 @@ class GetXHomePresenter extends GetxController implements HomePresenter {
   Stream<bool> get isLoadingStream => _isLoading.stream.distinct();
 
   @override
-  Stream<String> get searchErrorStream => _searchError.stream.distinct();
+  Stream<String> get searchErrorStream => _searchError.subject.stream.distinct();
 
   @override
   Stream<String> get navigateToStream => _navigateTo.stream.distinct();
@@ -36,19 +36,33 @@ class GetXHomePresenter extends GetxController implements HomePresenter {
   @override
   Stream<String> get searchStream => _search.stream.distinct();
 
+  @override
+  Stream<List> get dataStream => _dataStream.stream.distinct();
+
+
 
   @override
   Future<List<OrderEntity>> search() async {
     _isLoading.value = true;
     try{
       final List<OrderEntity> orders = await searchOrder.search(SearchParams( _search.value));
+      _dataStream.assignAll(orders);
       return orders;
       
     } on DomainError catch (error){
       _searchError.value = error.description;
+      
+    }finally{
+      _isLoading.value = false;
+  
     }
 
-    _isLoading.value = false;
+  }
+
+  @override
+  void newSearch(String value) {
+    _search.value = value;
+    search();
   }
 
 
