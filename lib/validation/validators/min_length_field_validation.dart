@@ -14,6 +14,6 @@ class MinLengthFieldValidation extends Equatable implements FieldValidation {
 	@override
 	String validate(String value) {
 		if (value != null && value.trim().isNotEmpty && value.length >= minLength) return null;
-		return "Campo muito curto";
+		return "Campo deve possuir no minímo $minLength caractéres";
 	}
 }
