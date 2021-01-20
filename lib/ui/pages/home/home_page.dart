@@ -1,13 +1,13 @@
 import 'package:faker/faker.dart';
-import 'package:fappetite/components/components.dart';
-import 'package:fappetite/ui/pages/home/components/new_order.dart';
-import 'package:fappetite/ui/pages/home/components/welcome_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:provider/provider.dart';
-
+import 'components/list_orders.dart';
+import 'components/new_order.dart';
+import 'components/welcome_text.dart';
 import 'components/search_field.dart';
 import 'home_presenter.dart';
+import '../../components/components.dart';
 
 class HomePage extends StatelessWidget {
   final HomePresenter presenter;
@@ -62,14 +62,16 @@ class HomePage extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(vertical: 20, horizontal: 18),
                   child: Provider(
-                      create: (BuildContext context) => presenter,
-                      child: SearchInput(),),
+                    create: (BuildContext context) => presenter,
+                    child: SearchInput(),
+                  ),
                 ),
-                StreamBuilder(
-                stream: presenter.dataStream,
-                builder: (BuildContext bc, data){
-                  return Text("$data");
-                }),
+                Expanded(
+                  child: Provider(
+                    create: (ctx) => presenter,
+                    child: ListOrders(),
+                  ),
+                ),
               ],
             );
           },

@@ -1,4 +1,4 @@
-import '../components/components.dart';
+import 'package:fappetite/ui/components/components.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

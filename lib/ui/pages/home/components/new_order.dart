@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class NewOrder extends StatelessWidget {
   @override
@@ -10,7 +11,9 @@ class NewOrder extends StatelessWidget {
 		   
 		  shape: RoundedRectangleBorder(),
 		  color: Colors.white,
-		  onPressed: () {},
+		  onPressed: () {
+		  	Get.offNamed("/new_order");
+		  },
 		  label: Text(
 			  "FAZER NOVO PEDIDO",
 			  textAlign: TextAlign.start,

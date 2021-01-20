@@ -18,14 +18,14 @@ class WelcomeText extends StatelessWidget {
               textAlign: TextAlign.start,
               style: TextStyle(
                   fontSize: 30,
-                  color: Theme.of(context).primaryColor,
+                  color: Theme.of(context).primaryColorDark,
                   letterSpacing: 1.6),
             ),
           ),
           SizedBox(
             width: MediaQuery.of(context).size.width / 1.5,
             child: Divider(
-              color: Colors.lightGreen,
+              color: Colors.green,
               thickness: 2,
               indent: 0,
               height: 2,

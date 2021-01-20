@@ -1,4 +1,4 @@
-import 'package:fappetite/components/components.dart';
+import 'package:fappetite/ui/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:provider/provider.dart';
