@@ -5,6 +5,7 @@ class OrderProgress extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
 	    crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
       children: [
       	Row(
 		      mainAxisAlignment: MainAxisAlignment.spaceBetween,

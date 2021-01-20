@@ -9,9 +9,9 @@ class ProductEntity extends Equatable{
   String imageNetworkPath;
   
 	String get optionsName {
-		String optionName = null;
+		String optionName = "";
 	  for(String i in options){
-		  optionName+="$i,";
+		  optionName+="$i, ";
 	  }
 	  return optionName;
 	}

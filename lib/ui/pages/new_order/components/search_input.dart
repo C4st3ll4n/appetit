@@ -12,6 +12,7 @@ class SearchInput extends StatelessWidget {
     return StreamBuilder<String>(
       stream: presenter.searchStream,
       builder: (ctx, snap) => TextFormField(
+        onChanged: presenter.newSearch,
         decoration: InputDecoration(
           border: border,
           errorBorder: border,

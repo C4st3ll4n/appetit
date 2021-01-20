@@ -9,14 +9,21 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 	  NumberFormat formatter = NumberFormat.currency(locale:"pt_BR", name:"reais", symbol:"R\$", decimalDigits: 2);
+	  
+	  String options = "";
+	  if(product.options!=null && product.options.length>0==true){
+		  options = product.optionsName;
+	  }else options = null;
 	  return Card(
 		  child: ListTile(
 			  title: Text(product.name),
-			  subtitle: Text(product.options?.length>0==true?product.optionsName:null),
+			  subtitle: options!=null?Text(options):null,
 			  leading: CircleAvatar(
+				  
 				  child: ClipRRect(
 					  child: Image(
 						  image: NetworkImage(product.imageNetworkPath),
+						  fit: BoxFit.cover,
 					  ),
 					  borderRadius: BorderRadius.circular(30),
 				  ),

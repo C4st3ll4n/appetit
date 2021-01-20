@@ -16,7 +16,7 @@ class ProductList extends StatelessWidget {
       builder: (BuildContext bc, data) {
         if (!data.hasData) {
           return ListTile(
-            title: Text("Nenhum pedido"),
+            title: Text("Nenhum produto"),
           );
         } else {
           Map<String, List> _elements = {};

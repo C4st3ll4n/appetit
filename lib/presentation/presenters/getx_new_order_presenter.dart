@@ -53,7 +53,7 @@ class GetXNewOrderPresenter extends GetxController implements NewOrderPresenter 
   Future<void> search() async{
     _isLoading.value = true;
     try {
-      final List<OrderEntity> orders =
+      final List<ProductEntity> orders =
           await sell.listProduct(ProductParams(product: _search.value, observation: null, flavor: null, client: null));
       _dataStream.assignAll(orders);
       return orders;
