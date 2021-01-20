@@ -1,4 +1,3 @@
-import 'package:fappetite/domain/entities/entities.dart';
 
 abstract class HomePresenter{
 	

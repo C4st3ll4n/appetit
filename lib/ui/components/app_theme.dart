@@ -13,6 +13,7 @@ ThemeData appTheme() => ThemeData(
       primaryColorLight: primaryColorLight,
       accentColor: primaryColor,
       backgroundColor: Colors.white,
+      scaffoldBackgroundColor: Colors.white,
       textTheme: TextTheme(
         headline1: TextStyle(
             fontSize: 30, fontWeight: FontWeight.bold, color: primaryColorDark),

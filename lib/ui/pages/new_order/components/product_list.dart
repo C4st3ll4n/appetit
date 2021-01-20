@@ -1,15 +1,15 @@
-import 'package:fappetite/domain/entities/entities.dart';
+import 'package:fappetite/domain/entities/product_entity.dart';
+import 'package:fappetite/ui/pages/new_order/new_order_presenter.dart';
 import 'package:flutter/material.dart';
 import 'package:group_list_view/group_list_view.dart';
 import 'package:provider/provider.dart';
 
-import '../../pages.dart';
-import 'order_item.dart';
+import 'product_item.dart';
 
-class ListOrders extends StatelessWidget {
+class ProductList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final presenter = Provider.of<HomePresenter>(context);
+    final presenter = Provider.of<NewOrderPresenter>(context);
     //presenter.search();
     return StreamBuilder<List>(
       stream: presenter.dataStream,
@@ -20,30 +20,30 @@ class ListOrders extends StatelessWidget {
           );
         } else {
           Map<String, List> _elements = {};
-          for (OrderEntity item in data.data) {
-            if (!_elements.containsKey("${item.soldDay}/${item.soldMonth}")) {
-              _elements["${item.soldDay}/${item.soldMonth}"] = List()
+          for (ProductEntity item in data.data) {
+            if (!_elements.containsKey(item.category)) {
+              _elements[item.category] = List()
                 ..add(item);
             } else {
-              _elements["${item.soldDay}/${item.soldMonth}"].add(item);
+              _elements[item.category].add(item);
             }
           }
-
+        
           return GroupListView(
             sectionsCount: _elements.keys.toList().length,
             countOfItemInSection: (int section) =>
-                _elements.values.toList()[section].length,
+            _elements.values.toList()[section].length,
             itemBuilder: (BuildContext context, IndexPath index) {
-              return OrderItem(
-                order: _elements.values.toList()[index.section][index.index],
+              return ProductItem(
+                product: _elements.values.toList()[index.section][index.index],
               );
             },
             groupHeaderBuilder: (BuildContext context, int section) {
               return Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
                 child: Text(
-                  "Em ${_elements.keys.toList()[section]} você vendeu R\$ 16,50",
+                  _elements.keys.toList()[section],
                   textAlign: TextAlign.start,
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400),
                 ),

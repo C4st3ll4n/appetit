@@ -20,6 +20,9 @@ class HomePage extends StatelessWidget {
       child: Scaffold(
         body: Builder(
           builder: (BuildContext contexto) {
+            
+            presenter.search();
+            
             presenter.isLoadingStream.listen(
               (isLoading) {
                 if (isLoading) {
