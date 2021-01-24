@@ -42,6 +42,7 @@ class GetXHomePresenter extends GetxController implements HomePresenter {
 
   @override
   Future<List<OrderEntity>> search() async {
+    _searchError.value = null;
     _isLoading.value = true;
     try {
       final List<OrderEntity> orders =

@@ -51,6 +51,7 @@ class GetXNewOrderPresenter extends GetxController implements NewOrderPresenter 
 
   @override
   Future<void> search() async{
+    _searchError.value = null;
     _isLoading.value = true;
     try {
       final List<ProductEntity> orders =
