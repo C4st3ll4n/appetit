@@ -48,6 +48,9 @@ Os padrões de design utilizados foram:
 * Adapter
 
 
+### Videos
+[APPTETIT Parte 1](https://www.youtube.com/watch?v=6JXzf9anukI&feature=youtu.be "Parte 1")
+
 ### Tests
 
 O projeto possue testes unitários e testes de widget
