@@ -20,9 +20,8 @@ class HomePage extends StatelessWidget {
       child: Scaffold(
         body: Builder(
           builder: (BuildContext contexto) {
-            
             presenter.search();
-            
+
             presenter.isLoadingStream.listen(
               (isLoading) {
                 if (isLoading) {
@@ -32,16 +31,20 @@ class HomePage extends StatelessWidget {
                 }
               },
             );
-            presenter.searchErrorStream.listen((error) {
-              if (error != null && error.trim().isNotEmpty) {
-                showErrorMessage(contexto, error);
-              }
-            });
-            presenter.navigateToStream.listen((page) {
-              if (page != null && page.trim().isNotEmpty) {
-                Get.offAllNamed(page);
-              }
-            });
+            presenter.searchErrorStream.listen(
+              (error) {
+                if (error != null && error.trim().isNotEmpty) {
+                  showErrorMessage(contexto, error);
+                }
+              },
+            );
+            presenter.navigateToStream.listen(
+              (page) {
+                if (page != null && page.trim().isNotEmpty) {
+                  Get.offAndToNamed(page);
+                }
+              },
+            );
 
             return Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -58,10 +61,13 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 18),
-                    child: Provider(create: (BuildContext context)=>presenter,
-                    child: NewOrder())),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 18),
+                  child: Provider(
+                    create: (BuildContext context) => presenter,
+                    child: NewOrder(),
+                  ),
+                ),
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 20, horizontal: 18),

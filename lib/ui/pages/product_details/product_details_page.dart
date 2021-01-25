@@ -7,6 +7,8 @@ class ProductDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
   	_product = ProductEntity.fromJson(Get.arguments);
-    return Container();
+    return Scaffold(
+	    body: Text("OEROSD"),
+    );
   }
 }

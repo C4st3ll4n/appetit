@@ -7,7 +7,6 @@ import 'new_order_presenter.dart';
 import 'components/components.dart';
 
 class NewOrderPage extends StatelessWidget {
-  
   final NewOrderPresenter presenter;
 
   const NewOrderPage({Key key, this.presenter}) : super(key: key);
@@ -15,12 +14,32 @@ class NewOrderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: Builder(
+        builder: (_) {
+          Widget widget  = Container(width: 0,height: 0,);
+          presenter.showBottomBar.listen(
+            (should) {
+              print("should: $should");
+              if (should) {
+                widget = Provider(
+                    create: (BuildContext context) => presenter,
+                    child: NewOrderBottomBar());
+              } else {
+                widget = Container(width: 0,height: 0,);
+              }
+            },
+          );
+          return widget;
+        },
+      ),
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          onPressed: presenter.goToHome,
+          onPressed: () {
+            presenter.goToHome();
+          },
           icon: Icon(
             Icons.arrow_back_ios,
             color: Theme.of(context).primaryColor,
@@ -28,12 +47,11 @@ class NewOrderPage extends StatelessWidget {
         ),
       ),
       body: Builder(
-        builder:(contexto){
-  
+        builder: (contexto) {
           presenter.search();
-  
+
           presenter.isLoadingStream.listen(
-                (isLoading) {
+            (isLoading) {
               if (isLoading) {
                 showSimpleLoading(contexto);
               } else {
@@ -45,7 +63,6 @@ class NewOrderPage extends StatelessWidget {
             if (error != null && error.trim().isNotEmpty) {
               showErrorMessage(contexto, error);
               hideLoading(contexto);
-  
             }
           });
           presenter.navigateToStream.listen((page) {
@@ -53,52 +70,56 @@ class NewOrderPage extends StatelessWidget {
               Get.toNamed(page);
             }
           });
-  
+
           return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-                child: HeadText(text: "Informações para o pedido"),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                child: Text(
-                  "Preencha as informações abaixo para concluir o pedido",
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w300,
-                      letterSpacing: 1.4),
-                ),
-              ),
-              Flexible(
-                flex: 3,
-                child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  child: OrderProgress(),
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+                  child: HeadText(text: "Informações para o pedido"),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                child: Provider(
-                  create: (BuildContext context) => presenter,
-                  child: SearchInput(),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  child: Text(
+                    "Preencha as informações abaixo para concluir o pedido",
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w300,
+                        letterSpacing: 1.4),
+                  ),
                 ),
-              ),
-              Expanded(flex: 5,
-                child: Provider(
-                  create: (ctx) => presenter,
-                  child: ProductList(),
+                Flexible(
+                  flex: 3,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 10),
+                    child: OrderProgress(),
+                  ),
                 ),
-              ),
-            ],
-          ),
-        );
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                  child: Provider(
+                    create: (BuildContext context) => presenter,
+                    child: SearchInput(),
+                  ),
+                ),
+                Expanded(
+                  flex: 5,
+                  child: Provider(
+                    create: (ctx) => presenter,
+                    child: ProductList(),
+                  ),
+                ),
+              ],
+            ),
+          );
         },
       ),
     );
