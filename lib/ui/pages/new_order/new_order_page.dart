@@ -15,13 +15,12 @@ class NewOrderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          onPressed: () {
-            Get.offNamed("/orders");
-          },
+          onPressed: presenter.goToHome,
           icon: Icon(
             Icons.arrow_back_ios,
             color: Theme.of(context).primaryColor,
@@ -45,11 +44,13 @@ class NewOrderPage extends StatelessWidget {
           presenter.searchErrorStream.listen((error) {
             if (error != null && error.trim().isNotEmpty) {
               showErrorMessage(contexto, error);
+              hideLoading(contexto);
+  
             }
           });
           presenter.navigateToStream.listen((page) {
             if (page != null && page.trim().isNotEmpty) {
-              Get.offAllNamed(page);
+              Get.toNamed(page);
             }
           });
   
@@ -61,7 +62,7 @@ class NewOrderPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
                 child: HeadText(text: "Informações para o pedido"),
               ),
               Padding(
@@ -69,15 +70,16 @@ class NewOrderPage extends StatelessWidget {
                 child: Text(
                   "Preencha as informações abaixo para concluir o pedido",
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 16,
                       fontWeight: FontWeight.w300,
                       letterSpacing: 1.4),
                 ),
               ),
               Flexible(
+                flex: 3,
                 child: Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                  const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   child: OrderProgress(),
                 ),
               ),

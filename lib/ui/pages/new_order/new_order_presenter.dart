@@ -12,6 +12,8 @@ abstract class NewOrderPresenter{
   
   void dispose();
   
+  void goToHome();
+  
   Future<void> search();
   
   void newSearch(String value);

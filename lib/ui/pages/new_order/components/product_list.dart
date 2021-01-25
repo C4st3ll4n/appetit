@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:group_list_view/group_list_view.dart';
 import 'package:provider/provider.dart';
 
-import 'product_item.dart';
+import '../../../components/product_item.dart';
 
 class ProductList extends StatelessWidget {
   @override

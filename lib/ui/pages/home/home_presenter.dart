@@ -13,6 +13,8 @@ abstract class HomePresenter{
 	
 	void dispose();
 	
+	void goToMakeOrder();
+	
 	Future<void> search();
 
   void newSearch(String value);

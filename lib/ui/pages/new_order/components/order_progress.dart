@@ -10,7 +10,7 @@ class OrderProgress extends StatelessWidget {
       	Row(
 		      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       	  children: [
-      	    Text("O que você está vendendo ?", style: TextStyle(fontWeight: FontWeight.w800, fontSize: 18),textAlign: TextAlign.start,),
+      	    Text("O que você está vendendo ?", style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),textAlign: TextAlign.start,),
       	    Text("1 de 3", style: TextStyle(fontWeight: FontWeight.w300, fontSize: 18),textAlign: TextAlign.start,),
       	  ],
       	),

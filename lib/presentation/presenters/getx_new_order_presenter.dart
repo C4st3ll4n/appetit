@@ -64,4 +64,8 @@ class GetXNewOrderPresenter extends GetxController implements NewOrderPresenter 
       _isLoading.value = false;
     }
   }
+  
+  void goToHome(){
+    _navigateTo.value = "/orders";
+  }
 }

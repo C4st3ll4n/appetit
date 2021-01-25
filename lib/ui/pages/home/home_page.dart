@@ -60,7 +60,8 @@ class HomePage extends StatelessWidget {
                 Padding(
                     padding: const EdgeInsets.symmetric(
                         vertical: 10, horizontal: 18),
-                    child: NewOrder()),
+                    child: Provider(create: (BuildContext context)=>presenter,
+                    child: NewOrder())),
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 20, horizontal: 18),

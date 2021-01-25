@@ -17,7 +17,7 @@ class HeadText extends StatelessWidget {
               "$text",
               textAlign: TextAlign.start,
               style: TextStyle(
-                  fontSize: 30,
+                  fontSize: 22, fontWeight: FontWeight.w300,
                   color: Theme.of(context).primaryColorDark,
                   letterSpacing: 1.6),
             ),

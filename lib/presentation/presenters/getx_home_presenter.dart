@@ -62,6 +62,12 @@ class GetXHomePresenter extends GetxController implements HomePresenter {
       _search.value = value;
       if(_search.value.length >=3 == true)  search();
     });
-    
   }
+
+  @override
+  void goToMakeOrder() {
+    _navigateTo.value = "/new_order";
+  }
+  
+  
 }

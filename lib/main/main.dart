@@ -33,6 +33,10 @@ class App extends StatelessWidget {
           name: "/new_order",
           page: makeNewOrderPage,
         ),
+        GetPage(
+          name: "/product_details",
+          page: makeProductDetailsPage,
+        ),
       ],
     );
   }
