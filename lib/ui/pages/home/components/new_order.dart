@@ -8,7 +8,6 @@ class NewOrder extends StatelessWidget {
 		  width: double.infinity,
 	    height: 60,
 	    child: RaisedButton.icon(
-		   
 		  shape: RoundedRectangleBorder(),
 		  color: Colors.white,
 		  onPressed: () {
@@ -17,7 +16,7 @@ class NewOrder extends StatelessWidget {
 		  label: Text(
 			  "FAZER NOVO PEDIDO",
 			  textAlign: TextAlign.start,
-			  style: TextStyle(color: Colors.grey, fontSize: 20),
+			  style: TextStyle(color: Colors.black54, fontSize: 18, fontWeight: FontWeight.w400),
 		  ),
 		  icon: Icon(
 			  Icons.add,

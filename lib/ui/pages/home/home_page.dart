@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: 80,
+                  height: 60,
                 ),
                 Padding(
                   padding:
@@ -59,7 +59,7 @@ class HomePage extends StatelessWidget {
                 ),
                 Padding(
                     padding: const EdgeInsets.symmetric(
-                        vertical: 20, horizontal: 18),
+                        vertical: 10, horizontal: 18),
                     child: NewOrder()),
                 Padding(
                   padding:

@@ -19,7 +19,8 @@ class WelcomeText extends StatelessWidget {
               style: TextStyle(
                   fontSize: 30,
                   color: Theme.of(context).primaryColorDark,
-                  letterSpacing: 1.6),
+                  letterSpacing: 1.6,
+              fontWeight: FontWeight.w300),
             ),
           ),
           SizedBox(

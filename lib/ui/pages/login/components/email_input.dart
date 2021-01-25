@@ -12,13 +12,10 @@ class EmailInput extends StatelessWidget {
 			builder: (ctx, snap) => TextFormField(
 				onChanged: presenter.validateEmail,
 				decoration: InputDecoration(
+					hintText: "Insira seu e-mail aqui",
 					errorText:
 					snap.data?.isEmpty == true ? null : snap.data,
 					labelText: "Email",
-					icon: Icon(
-						Icons.email,
-						color: Theme.of(context).primaryColorLight,
-					),
 				),
 				keyboardType: TextInputType.emailAddress,
 			),
