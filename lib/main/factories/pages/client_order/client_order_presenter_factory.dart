@@ -1,7 +1,10 @@
-import 'package:fappetite/ui/pages/client_order/client_order_presenter.dart';
+import 'package:fappetite/data/usecases/client/client.dart';
+import 'package:fappetite/domain/usecases/usecases.dart';
+import 'package:fappetite/main/factories/factories.dart';
 
-import '../../usecases/sell_factory.dart';
-import '../../../../presentation/presenters/getx_new_order_presenter.dart';
+import '../../../../presentation/presenters/presenters.dart';
+import '../../../../ui/pages/client_order/client_order_presenter.dart';
 
+ClientOrderPresenter makeGetXClientOrderPresenter() => GetClientOrderPresenter(client: makeClient());
 
-ClientOrderPresenter makeGetXClientOrderPresenter() => null;//TODO
+Client makeClient()=> RemoteClient(httpClient: makeHttpAdapter(), url: "");

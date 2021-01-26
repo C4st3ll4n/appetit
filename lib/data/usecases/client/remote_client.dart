@@ -22,13 +22,12 @@ class RemoteClient implements Client {
   @override
   Future<List<ClientEntity>> list() async {
     try {
-      Map response =
-          await httpClient.request(url: url, method: 'get');
-
+      //Map response =          await httpClient.request(url: url, method: 'get');
+      Future.delayed(Duration(seconds: 2));
       /// MOCKANDO RESPOSTA DE AUTENTICAÇÃO
-      response = {
+      /*response = {
         "clients": []
-      };
+      };*/
 
       /*return response.values.map(
 							(order) => RemoteOrderModel.fromJson(order).toEntity())
@@ -49,12 +48,6 @@ class RemoteClient implements Client {
         
       ];
 
-      /*
-       "description"
-"clientName"
-"totalPrice"
-"imagePath"
-       */
 
     } on HttpError catch (e, stack) {
       log("\n\n ############\n${e.toString()}\n${stack.toString()}############\n\n");

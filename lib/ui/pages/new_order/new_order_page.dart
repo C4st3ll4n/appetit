@@ -43,7 +43,8 @@ class NewOrderPage extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           onPressed: () {
-            presenter.goToHome();
+            Get.back();
+            //presenter.goToHome();
           },
           icon: Icon(
             Icons.arrow_back_ios,
@@ -71,9 +72,9 @@ class NewOrderPage extends StatelessWidget {
             }
           });
           presenter.navigateToStream.listen((page) {
-            log("#$page");
             if (page != null && page.trim().isNotEmpty) {
-              Get.toNamed(page);
+            log("#$page");
+              Get.offAndToNamed(page);
             }
           });
 

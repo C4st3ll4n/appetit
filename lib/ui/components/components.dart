@@ -5,4 +5,4 @@ export 'headline2.dart';
 export 'spinner_dialog.dart';
 export 'error_message.dart';
 export 'head_text.dart';
-export 'product_item.dart';
+export '../pages/new_order/components/product_item.dart';

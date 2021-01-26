@@ -1,4 +1,5 @@
 import 'package:fappetite/domain/entities/client_entity.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -13,27 +14,28 @@ class ClientItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final presenter = Provider.of<ClientOrderPresenter>(context);
-    NumberFormat formatter = NumberFormat.currency(
-        locale: "pt_BR", name: "reais", symbol: "R\$", decimalDigits: 2);
+   
     final titleTextStyleSelected = TextStyle(
-      color: Colors.white,
+      color: Colors.white, fontWeight: FontWeight.bold,
     );
-    final subtitleTextStyleSelected = TextStyle(
-      color: Colors.white,
+    final titleTextStyleUnselected = TextStyle(
+      color: Colors.black, fontWeight: FontWeight.bold,
     );
 
 
-    final selected = client.name == "Cuscuz completo";
+    bool selected = presenter.contains(client);
     return Card(
       elevation: 2,
       child: ListTile(
         selected: selected,
         selectedTileColor: Theme.of(context).primaryColor,
         onTap: () {
+          presenter.toggleClient(client);
         },
+        //onLongPress:()=> presenter.toggleClient(client),
         title: Text(
           client.name,
-          style: selected ? titleTextStyleSelected : null,
+          style: selected ? titleTextStyleSelected : titleTextStyleUnselected,
         ),
         leading: CircleAvatar(
           child: ClipRRect(

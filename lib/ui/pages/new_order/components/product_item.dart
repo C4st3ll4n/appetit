@@ -1,12 +1,8 @@
-import 'dart:developer';
-
 import 'package:fappetite/presentation/presenters/getx_new_order_presenter.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import '../../domain/entities/entities.dart';
-import '../pages/new_order/new_order_presenter.dart';
+import '../../../../domain/entities/entities.dart';
 
 class ProductItem extends StatelessWidget {
   final ProductEntity product;

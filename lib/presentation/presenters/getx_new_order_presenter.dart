@@ -86,6 +86,8 @@ class GetXNewOrderPresenter extends GetxController
   @override
   void goToHome() {
     _navigateTo.value = "/orders";
+    _navigateTo.value = null;
+  
   }
 
   @override
@@ -99,6 +101,8 @@ class GetXNewOrderPresenter extends GetxController
   @override
   void goToSelectClient() {
     _navigateTo.value = "/client_order";
+    _navigateTo.value = null;
+  
   }
 
   void toggleProduct(ProductEntity entity) {

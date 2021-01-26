@@ -40,7 +40,8 @@ class NewOrderBottomBar extends StatelessWidget {
                     if(snapshot.data==0){
                       showErrorMessage(context, "Selecione pelo menos um item");
                     }else{
-                      presenter.goToSelectClient();
+                      //presenter.goToSelectClient();
+                      Get.toNamed("/client_order");
                     }
                   },
                   child: Text(

@@ -74,6 +74,8 @@ class GetXHomePresenter extends GetxController implements HomePresenter {
   @override
   void goToMakeOrder() {
     _navigateTo.value = "/new_order";
+    _navigateTo.value = null;
+  
   }
   
   

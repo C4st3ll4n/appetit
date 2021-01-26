@@ -20,7 +20,7 @@ class ClientOrderPage extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           onPressed: () {
-            presenter.goBack();
+            Get.back();
           },
           icon: Icon(
             Icons.arrow_back_ios,
@@ -47,12 +47,12 @@ class ClientOrderPage extends StatelessWidget {
               hideLoading(contexto);
             }
           });
-          presenter.navigateToStream.listen((page) {
+       /*   presenter.navigateToStream.listen((page) {
             if (page != null && page.trim().isNotEmpty) {
               Get.toNamed(page);
             }
           });
-
+*/
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
