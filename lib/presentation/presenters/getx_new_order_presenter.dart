@@ -17,14 +17,12 @@ class GetXNewOrderPresenter extends GetxController implements NewOrderPresenter 
   var _searchError = RxString();
   var _search = RxString();
   var _navigateTo = RxString();
-  var _dataStream = RxList([]);
+  var _dataStream = RxList<ProductEntity>([]);
   
   var _isLoading = false.obs;
   var _shouldShowBottomBar = false.obs;
   
-  var _selectedProduct = Rx();
-  var _selectedProducts = RxList();
-  var _selectedClients = RxList();
+  var _selectedProducts = RxList<ProductEntity>([]);
 
   GetXNewOrderPresenter({
     @required this.sell,
@@ -78,20 +76,29 @@ class GetXNewOrderPresenter extends GetxController implements NewOrderPresenter 
 
   @override
   void goToHome(){
-    _selectedProduct.value = null;
     _navigateTo.value = "/orders";
   }
 
   @override
   void goToProductDetails(ProductEntity product) {
+    //FIXME:: NOT WORKING AS I'D LIKE
     //Get.offNamed("/order_details", arguments: {"product":product.toJson()});
-    _navigateTo.value="/order_details";
-    _selectedProduct.value = product;
+    //_navigateTo.value="/order_details";
+    //_selectedProduct.value = product;
   }
 
   @override
   void goToSelectClient() {
-    _navigateTo.value="/select_client";
-    
+    _navigateTo.value="/order_client";
   }
+  
+  void toggleProduct(ProductEntity entity){
+    if(_selectedProducts.contains(entity)){
+      _selectedProducts.remove(entity);
+    }else{
+      _selectedProducts.add(entity);
+    }
+  }
+  
+  bool contains(ProductEntity entity)=> _selectedProducts.contains(entity);
 }

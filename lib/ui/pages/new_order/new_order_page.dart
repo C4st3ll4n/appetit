@@ -1,13 +1,13 @@
+import 'package:fappetite/presentation/presenters/getx_new_order_presenter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 import '../../components/components.dart';
-import 'new_order_presenter.dart';
 import 'components/components.dart';
 
 class NewOrderPage extends StatelessWidget {
-  final NewOrderPresenter presenter;
+  final GetXNewOrderPresenter presenter;
 
   const NewOrderPage({Key key, this.presenter}) : super(key: key);
 

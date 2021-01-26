@@ -1,3 +1,4 @@
+import 'package:fappetite/presentation/presenters/getx_new_order_presenter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
@@ -8,7 +9,7 @@ class NewOrderBottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textStyle = TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 20);
-    final presenter = Provider.of<NewOrderPresenter>(context);
+    final presenter = Provider.of<GetXNewOrderPresenter>(context);
 
     return BottomAppBar(
       color: Theme.of(context).primaryColor,

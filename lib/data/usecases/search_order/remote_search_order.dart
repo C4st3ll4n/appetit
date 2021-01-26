@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:fappetite/data/models/remote_order_model.dart';
 import 'package:fappetite/domain/usecases/search_order.dart';
 import 'package:meta/meta.dart';
@@ -21,11 +23,10 @@ class RemoteSearchOrder implements SearchOrder {
     try {
       final body = RemoteSearchOrderParams.fromDomain(params).toJson();
 
-      Map response =
-          await httpClient.request(url: url, method: 'post', body: body);
+      //Map response =          await httpClient.request(url: url, method: 'post', body: body);
 
       /// MOCKANDO RESPOSTA DE AUTENTICAÇÃO
-      response = {
+      final response = {
         "orders": [
           {
             "description": "1x Cuscuz com calabresa, 1x salgado",
@@ -85,10 +86,14 @@ class RemoteSearchOrder implements SearchOrder {
 "imagePath"
        */
 
-    } on HttpError catch (error) {
+    } on HttpError catch (error, stack) {
+      log("\n\n ############\n${error.toString()}\n${stack.toString()}############\n\n");
       throw error == HttpError.unauthorized
           ? DomainError.invalidCredentials
           : DomainError.unexpected;
+    }catch(error, stack){
+      log("\n\n ############\n${error.toString()}\n${stack.toString()}############\n\n");
+  
     }
   }
 }

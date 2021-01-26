@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:fappetite/data/models/models.dart';
 import 'package:fappetite/data/models/remote_order_model.dart';
 import 'package:fappetite/domain/usecases/client.dart';
@@ -54,10 +56,14 @@ class RemoteClient implements Client {
 "imagePath"
        */
 
-    } on HttpError catch (error) {
-      throw error == HttpError.unauthorized
+    } on HttpError catch (e, stack) {
+      log("\n\n ############\n${e.toString()}\n${stack.toString()}############\n\n");
+  
+      throw e == HttpError.unauthorized
           ? DomainError.invalidCredentials
           : DomainError.unexpected;
+    }catch(e, stack){
+      log("\n\n ############\n${e.toString()}\n${stack.toString()}############\n\n");
     }
   }
 }

@@ -1,5 +1,5 @@
-import 'package:fappetite/ui/pages/new_order/new_order_page.dart';
 import 'package:flutter/material.dart';
-import 'new_order_presenter_factory.dart';
+import 'client_order_presenter_factory.dart';
+import '../../../../ui/pages/client_order/client_order_page.dart';
 
-Widget makeNewOrderPage() => NewOrderPage(presenter: makeGetXNewOrderPresenter(),);
+Widget makeNewOrderPage() => ClientOrderPage(presenter: makeGetXClientOrderPresenter(),);

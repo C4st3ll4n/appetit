@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:fappetite/data/usecases/search_order/remote_search_order.dart';
 import 'package:fappetite/ui/pages/home/home_presenter.dart';
 import 'package:get/get.dart';
@@ -49,9 +51,14 @@ class GetXHomePresenter extends GetxController implements HomePresenter {
           await searchOrder.search(SearchParams(_search.value));
       _dataStream.assignAll(orders);
       return orders;
-    } on DomainError catch (error) {
+    } on DomainError catch (error, stack) {
+      log("\n\n ############\n${error.toString()}\n${stack.toString()}############\n\n");
       _searchError.value = error.description;
-    } finally {
+    }
+    catch(error, stack){
+      log("\n\n ############\n${error.toString()}\n${stack.toString()}############\n\n");
+    }
+    finally {
       _isLoading.value = false;
     }
   }

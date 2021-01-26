@@ -1,3 +1,5 @@
+import 'package:fappetite/presentation/presenters/getx_new_order_presenter.dart';
+
 import '../../home/home_presenter.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -7,7 +9,7 @@ import '../new_order_presenter.dart';
 class SearchInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final presenter = Provider.of<NewOrderPresenter>(context);
+    final GetXNewOrderPresenter presenter = Provider.of<NewOrderPresenter>(context);
     final border = UnderlineInputBorder();
     return StreamBuilder<String>(
       stream: presenter.searchStream,

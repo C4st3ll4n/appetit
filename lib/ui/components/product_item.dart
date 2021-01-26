@@ -1,3 +1,4 @@
+import 'package:fappetite/presentation/presenters/getx_new_order_presenter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -12,9 +13,10 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final presenter = Provider.of<NewOrderPresenter>(context);
+    final GetXNewOrderPresenter presenter = Provider.of<NewOrderPresenter>(context);
     NumberFormat formatter = NumberFormat.currency(
         locale: "pt_BR", name: "reais", symbol: "R\$", decimalDigits: 2);
+    
     final titleTextStyleSelected = TextStyle(
       color: Colors.white,
     );
@@ -28,14 +30,17 @@ class ProductItem extends StatelessWidget {
     } else
       options = null;
 
-    final selected = product.name == "Cuscuz completo";
+    final selected = presenter.contains(product);
     return Card(
       elevation: 2,
       child: ListTile(
         selected: selected,
         selectedTileColor: Theme.of(context).primaryColor,
         onTap: () {
-          presenter.goToProductDetails(product);
+          //presenter.goToProductDetails(product);
+        },
+        onLongPress: (){
+          presenter.toggleProduct(product);
         },
         title: Text(
           product.name,

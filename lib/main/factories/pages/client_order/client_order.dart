@@ -1,1 +1,1 @@
-export 'new_order_page_factory.dart';
+export 'client_order_page_factory.dart';

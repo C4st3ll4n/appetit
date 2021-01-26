@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
 import 'package:meta/meta.dart';
 import '../../domain/entities/account_entity.dart';
@@ -12,7 +14,7 @@ import '../../ui/pages/login/login_presenter.dart';
 class GetXLoginPresenter extends GetxController implements LoginPresenter {
   final Validation validation;
   final Authentication authentication;
-  
+
   String _email;
   String _password;
 
@@ -24,9 +26,10 @@ class GetXLoginPresenter extends GetxController implements LoginPresenter {
   var _isFormValid = false.obs;
   var _isLoading = false.obs;
 
-
-  GetXLoginPresenter(
-      {@required this.validation, @required this.authentication,});
+  GetXLoginPresenter({
+    @required this.validation,
+    @required this.authentication,
+  });
 
   @override
   Stream<String> get emailErrorStream => _emailError.stream.distinct();
@@ -51,18 +54,19 @@ class GetXLoginPresenter extends GetxController implements LoginPresenter {
     _mainError.value = null;
     _isLoading.value = true;
 
-      try {
+    try {
       final AccountEntity account = await authentication.auth(
         AuthenticationParams(email: _email, secret: _password),
       );
-      
+
       _navigateTo.value = "/orders";
-      
-    } on DomainError catch (error) {
+    } on DomainError catch (error, stack) {
+      log("\n\n ############\n${error.toString()}\n${stack.toString()}############\n\n");
       _mainError.value = error.description;
       _isLoading.value = false;
+    }catch(error, stack){
+      log("\n\n ############\n${error.toString()}\n${stack.toString()}############\n\n");
     }
-
   }
 
   /// Unnecesary: GetX automatcally disposes
@@ -84,13 +88,8 @@ class GetXLoginPresenter extends GetxController implements LoginPresenter {
     validateForm();
   }
 
-  void validateForm() =>
-      _isFormValid.value =
-              _emailError.value == null &&
-              _passwordError.value == null &&
-              _email != null &&
-              _password != null;
-
-
-
+  void validateForm() => _isFormValid.value = _emailError.value == null &&
+      _passwordError.value == null &&
+      _email != null &&
+      _password != null;
 }
