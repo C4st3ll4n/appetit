@@ -46,12 +46,11 @@ class FinishOrderPage extends StatelessWidget {
               hideLoading(contexto);
             }
           });
-       /*   presenter.navigateToStream.listen((page) {
+          presenter.navigateToStream.listen((page) {
             if (page != null && page.trim().isNotEmpty) {
               Get.toNamed(page);
             }
           });
-*/
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(

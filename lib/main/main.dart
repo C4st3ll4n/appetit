@@ -21,7 +21,7 @@ class App extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Apettit",
-      initialRoute: "/client_order",
+      initialRoute: "/finish_order",
       theme: appTheme(),
       getPages: [
         GetPage(name: "/login", page: makeLoginPage, transition: Transition.fade),
@@ -40,6 +40,9 @@ class App extends StatelessWidget {
         ), GetPage(
           name: "/client_order",
           page: makeClientOrderPage,
+        ), GetPage(
+          name: "/finish_order",
+          page: makeFinishOrderPage,
         ),
       ],
     );
