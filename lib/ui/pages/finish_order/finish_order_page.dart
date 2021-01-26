@@ -58,6 +58,7 @@ class FinishOrderPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
@@ -82,7 +83,8 @@ class FinishOrderPage extends StatelessWidget {
                     child: OrderProgress(),
                   ),
                 ),
-                
+                Provider(create: (BuildContext context) => presenter,
+                child: PaymentCheckbox()),
               ],
             ),
           );

@@ -17,7 +17,7 @@ class GetXFinishOrderPresenter extends GetxController implements FinishOrderPres
   final FinishOrder finishOrder;
   
   String date;
-  bool isPaid;
+  var isPaid = RxBool(false);
   
   var _mainError = RxString();
   var _navigateTo = RxString();
@@ -48,7 +48,7 @@ class GetXFinishOrderPresenter extends GetxController implements FinishOrderPres
     _isLoading.value = true;
 
     try {
-      final result = await finishOrder.finish(FinishParams(isPaid: isPaid, date: date));
+      final result = await finishOrder.finish(FinishParams(isPaid: isPaid.value, date: date));
       _successful.value = result;
       if(_successful.isTrue){
         _navigateTo.value = "/successful_order";
@@ -68,7 +68,7 @@ class GetXFinishOrderPresenter extends GetxController implements FinishOrderPres
 
   @override
   void goBack() {
-    _navigateTo.value = "/successful_order";
+    _navigateTo.value = "/client_order";
     _navigateTo.value = null;
   }
 
@@ -76,7 +76,7 @@ class GetXFinishOrderPresenter extends GetxController implements FinishOrderPres
   Stream<bool> get isFormValid => _isFormValid.stream.distinct();
   
   void setPaid(bool value){
-    isPaid = value;
+    isPaid.value = value;
     validateForm();
   }
   
@@ -86,5 +86,11 @@ class GetXFinishOrderPresenter extends GetxController implements FinishOrderPres
   }
   
   void validateForm() => _isFormValid.value =  date !=null && isPaid != null && date.isNotEmpty;
+
+  @override
+  Stream<bool> get paymentState => isPaid.stream.distinct();
+
+  @override
+  void togglePaymentState() => isPaid.value = !isPaid.value;
 
 }

@@ -4,6 +4,7 @@ import 'package:fappetite/domain/entities/client_entity.dart';
 abstract class FinishOrderPresenter{
   
   Stream<bool> get successful;
+  Stream<bool> get paymentState;
   
   Stream<String> get mainErrorStream;
   
@@ -18,6 +19,5 @@ abstract class FinishOrderPresenter{
   
   void goBack();
   
- 
-
+  void togglePaymentState();
 }
