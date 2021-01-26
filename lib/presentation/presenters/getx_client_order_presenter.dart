@@ -69,6 +69,8 @@ class GetClientOrderPresenter extends GetxController
       _isLoading.value = false;
     }
   }
+  
+  
 
   void toggleClient(ClientEntity entity) {
     if (_selectedClients.contains(entity)) {

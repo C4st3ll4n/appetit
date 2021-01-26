@@ -23,7 +23,7 @@ class ClientList extends StatelessWidget {
             stream: presenter.selectedClients,
             builder: (BuildContext context,
                 AsyncSnapshot<List<ClientEntity>> snapshot) {
-              log("${snapshot}");
+              
               return ListView.builder(
                 itemCount: snap.data.length ?? 0,
                 itemBuilder: (_, i) {

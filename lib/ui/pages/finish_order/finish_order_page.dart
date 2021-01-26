@@ -5,17 +5,16 @@ import 'package:provider/provider.dart';
 
 import '../../components/components.dart';
 import 'components/components.dart';
+import 'finish_order_presenter.dart';
 
-class ClientOrderPage extends StatelessWidget {
-  final ClientOrderPresenter presenter;
+class FinishOrderPage extends StatelessWidget {
+  final FinishOrderPresenter presenter;
 
-  const ClientOrderPage({Key key, this.presenter}) : super(key: key);
+  const FinishOrderPage({Key key, this.presenter}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: Provider(create: (BuildContext context) =>presenter,
-      child: ClientOrderBottomBar()),
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -32,8 +31,6 @@ class ClientOrderPage extends StatelessWidget {
       ),
       body: Builder(
         builder: (contexto) {
-          presenter.search();
-
           presenter.isLoadingStream.listen(
             (isLoading) {
               if (isLoading) {
@@ -43,7 +40,7 @@ class ClientOrderPage extends StatelessWidget {
               }
             },
           );
-          presenter.searchErrorStream.listen((error) {
+          presenter.mainErrorStream.listen((error) {
             if (error != null && error.trim().isNotEmpty) {
               showErrorMessage(contexto, error);
               hideLoading(contexto);
@@ -86,21 +83,7 @@ class ClientOrderPage extends StatelessWidget {
                     child: OrderProgress(),
                   ),
                 ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                  child: Provider(
-                    create: (BuildContext context) => presenter,
-                    child: SearchInput(),
-                  ),
-                ),
-                Expanded(
-                  flex: 25,
-                  child: Provider(
-                    create: (ctx) => presenter,
-                    child: ClientList(),
-                  ),
-                ),
+                
               ],
             ),
           );
