@@ -24,10 +24,11 @@ class App extends StatelessWidget {
       initialRoute: "/login",
       theme: appTheme(),
       getPages: [
-        GetPage(name: "/login", page: makeLoginPage),
+        GetPage(name: "/login", page: makeLoginPage, transition: Transition.fade),
         GetPage(
           name: "/orders",
           page: makeHomePage,
+            transition: Transition.fadeIn
         ),
         GetPage(
           name: "/new_order",
@@ -36,6 +37,9 @@ class App extends StatelessWidget {
         GetPage(
           name: "/product_details",
           page: makeProductDetailsPage,
+        ), GetPage(
+          name: "/client_order",
+          page: makeClientOrderPage,
         ),
       ],
     );

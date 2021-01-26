@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:fappetite/presentation/presenters/getx_new_order_presenter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -69,6 +71,7 @@ class NewOrderPage extends StatelessWidget {
             }
           });
           presenter.navigateToStream.listen((page) {
+            log("#$page");
             if (page != null && page.trim().isNotEmpty) {
               Get.toNamed(page);
             }

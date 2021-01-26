@@ -98,7 +98,7 @@ class GetXNewOrderPresenter extends GetxController
 
   @override
   void goToSelectClient() {
-    _navigateTo.value = "/order_client";
+    _navigateTo.value = "/client_order";
   }
 
   void toggleProduct(ProductEntity entity) {

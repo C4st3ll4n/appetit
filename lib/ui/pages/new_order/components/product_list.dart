@@ -37,14 +37,14 @@ class ProductList extends StatelessWidget {
             countOfItemInSection: (int section) =>
                 _elements.values.toList()[section].length,
             itemBuilder: (BuildContext context, IndexPath index) {
-              return GestureDetector(
-                onTap: () => Get.toNamed("/product_details",
-                    arguments: _elements.values.toList()[index.section]
-                        [index.index]),
-                child: ProductItem(
-                  product: _elements.values.toList()[index.section]
-                      [index.index],
-                ),
+              return StreamBuilder(
+                stream: presenter.selectedProducts.stream,
+                builder: (_,snap){
+                  return ProductItem(
+                    product: _elements.values.toList()[index.section]
+                    [index.index],
+                  );
+                },
               );
             },
             groupHeaderBuilder: (BuildContext context, int section) {

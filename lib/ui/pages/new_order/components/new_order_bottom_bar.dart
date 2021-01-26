@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:fappetite/ui/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
@@ -28,12 +31,17 @@ class NewOrderBottomBar extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                "Total: R\$ ${formatter.format(snapshot.data)}",
+                "Total: ${formatter.format(snapshot.data??0.0)}",
                 style: textStyle,
               ),
               GestureDetector(
                   onTap: () {
-                    Get.toNamed("/product_details");
+                    //Get.toNamed("/product_details");
+                    if(snapshot.data==0){
+                      showErrorMessage(context, "Selecione pelo menos um item");
+                    }else{
+                      presenter.goToSelectClient();
+                    }
                   },
                   child: Text(
                     "Avançar >",
