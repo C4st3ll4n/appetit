@@ -48,22 +48,24 @@ Os padrões de design utilizados foram:
 * Adapter
 
 
+### Videos
+[APPTETIT Parte 1](https://www.youtube.com/watch?v=6JXzf9anukI&feature=youtu.be "Parte 1")
+
 ### Tests
 
 O projeto possue testes unitários e testes de widget
 Para realizer os testes basta seguir a "receita":
+
 ```flutter
 flutter pub get
 flutter test
 ```
-
 
 ### APK
 
 O apk fica disponível para download em:
 
 
-### Screenshots e vídeo de utilizaçaõ
+### Screenshots
 
-O vídeo fica disponível em:
 Os prints das telas ficam disponível em:
