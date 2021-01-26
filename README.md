@@ -22,8 +22,6 @@ Esse app foi desenvolvido utilizando os conceitos:
 ![Image of Clean Archtectute](https://miro.medium.com/max/620/1*eIPadxXhSJicO6GLNR3b7A.png)
 
 Logo fica estruturado da seguinte maneira:
-* components
-    * com arquivos de estilização e widgets reusáveis
 * data
     *  implementa os casos de uso do dominio
 * domain
@@ -35,7 +33,7 @@ Logo fica estruturado da seguinte maneira:
 * presentation
     * contém os presenters das telas
 * ui
-    * contém as telas do aplicativo
+    * contém as telas e componentes do aplicativo
 * validation
     * contém os arquivos com as validações dos campos
 
