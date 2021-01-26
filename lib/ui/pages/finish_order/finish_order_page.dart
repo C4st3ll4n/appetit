@@ -1,3 +1,4 @@
+import 'package:date_time_picker/date_time_picker.dart';
 import 'package:fappetite/ui/pages/client_order/client_order_presenter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -58,7 +59,6 @@ class FinishOrderPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
@@ -83,8 +83,19 @@ class FinishOrderPage extends StatelessWidget {
                     child: OrderProgress(),
                   ),
                 ),
+                Provider(
+                    create: (BuildContext context) => presenter,
+                    child: PaymentCheckbox()),
+                Provider(
+                  create: (BuildContext context) => presenter,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: DatePicker()
+                  ),
+                ),
+                SizedBox(height: 30,),
                 Provider(create: (BuildContext context) => presenter,
-                child: PaymentCheckbox()),
+                child: FinishButton())
               ],
             ),
           );

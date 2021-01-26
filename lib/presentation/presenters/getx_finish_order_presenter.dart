@@ -43,6 +43,12 @@ class GetXFinishOrderPresenter extends GetxController implements FinishOrderPres
   Stream<bool> get successful => _successful.stream.distinct();
 
   @override
+  Stream<bool> get paymentState => isPaid.stream.distinct();
+  
+  @override
+  Stream<bool> get isFormValid => _isFormValid.stream.distinct();
+  
+  @override
   Future finish() async {
     _mainError.value = null;
     _isLoading.value = true;
@@ -71,26 +77,26 @@ class GetXFinishOrderPresenter extends GetxController implements FinishOrderPres
     _navigateTo.value = "/client_order";
     _navigateTo.value = null;
   }
-
-  @override
-  Stream<bool> get isFormValid => _isFormValid.stream.distinct();
-  
+  /*
   void setPaid(bool value){
     isPaid.value = value;
     validateForm();
-  }
-  
+  }*/
+  @override
   void setDate(String value){
     date = value;
+    print("asadfdfs");
     validateForm();
   }
   
   void validateForm() => _isFormValid.value =  date !=null && isPaid != null && date.isNotEmpty;
 
-  @override
-  Stream<bool> get paymentState => isPaid.stream.distinct();
 
   @override
-  void togglePaymentState() => isPaid.value = !isPaid.value;
+  void togglePaymentState() {
+    isPaid.value = !isPaid.value;
+    validateForm();
+  
+  }
 
 }

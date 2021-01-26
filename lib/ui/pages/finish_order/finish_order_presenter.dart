@@ -20,4 +20,5 @@ abstract class FinishOrderPresenter{
   void goBack();
   
   void togglePaymentState();
+  void setDate(String date);
 }

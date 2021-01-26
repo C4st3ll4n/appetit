@@ -15,7 +15,7 @@ class PaymentCheckbox extends StatelessWidget {
 		  stream: presenter.paymentState,
 		  initialData: false,
 		  builder: (context, snapshot) {
-		  	log("${snapshot}");
+		  	
 		    return Container(
 			    padding: EdgeInsets.all(8),
 		    	child: Column(
