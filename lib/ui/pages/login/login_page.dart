@@ -1,4 +1,4 @@
-import 'package:fappetite/components/components.dart';
+import 'package:fappetite/ui/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:provider/provider.dart';
@@ -65,7 +65,7 @@ class LoginPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
                     child: Text("Nós sabemos a importância de estar sempre de barriga cheia e o quanto isso pode ajudar seu dia.",
-                      textAlign: TextAlign.center, style: TextStyle(fontSize: 22, color: Colors.grey),
+                      textAlign: TextAlign.center, style: TextStyle(fontSize: 18, color: Colors.grey),
                     ),
                   ),
                   Padding(

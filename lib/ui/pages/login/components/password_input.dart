@@ -17,14 +17,13 @@ class PasswordInput extends StatelessWidget {
 			builder: (ctx, snap) => TextFormField(
 				onChanged: presenter.validatePassword,
 				decoration: InputDecoration(
+					floatingLabelBehavior: FloatingLabelBehavior.always,
+					suffixIcon: IconButton(onPressed: () {  }, icon: Icon(Icons.visibility_off_outlined),),
+					hintText: "Insira a sua senha aqui",
 					labelText: "Senha",
 					errorText: snap.data?.isEmpty == true
 							? null
 							: snap.data,
-					icon: Icon(
-						Icons.lock,
-						color: Theme.of(context).primaryColorLight,
-					),
 				),
 				keyboardType: TextInputType.visiblePassword,
 				obscureText: true,

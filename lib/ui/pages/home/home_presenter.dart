@@ -1,4 +1,8 @@
+
 abstract class HomePresenter{
+	
+	Stream<List> get dataStream;
+
 	Stream<String> get searchStream;
 	
 	Stream<String> get searchErrorStream;
@@ -9,5 +13,9 @@ abstract class HomePresenter{
 	
 	void dispose();
 	
+	void goToMakeOrder();
+	
 	Future<void> search();
+
+  void newSearch(String value);
 }

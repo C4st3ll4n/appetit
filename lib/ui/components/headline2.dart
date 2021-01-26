@@ -14,7 +14,7 @@ class Headline2 extends StatelessWidget {
 		return Text(
 			"$text",
 			textAlign: TextAlign.center,
-			style: Theme.of(context).textTheme.headline2.copyWith(color: Theme.of(context).primaryColorLight, fontSize: 36),
+			style: Theme.of(context).textTheme.headline2.copyWith(color: Theme.of(context).primaryColorLight, fontSize: 30),
 		);
 	}
 }

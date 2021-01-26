@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:faker/faker.dart';
 import 'package:http/http.dart';
@@ -26,9 +27,9 @@ class HttpAdapter implements HttpClient {
         response = await Future.delayed(
           Duration(seconds: 2),
           () {
-            if (random.boolean()) return Response("", 200);
+            if (random.integer(10)==0) return Response("", 200);
 
-            return Response(null, random.integer(500, min: 400));
+            return Response("", random.integer(500, min: 400));
           },
         );
       }else if(method == 'get'){
@@ -41,7 +42,8 @@ class HttpAdapter implements HttpClient {
           },
         );
       }
-    } catch (e) {
+    } catch (e, stack) {
+      log("\n\n ############\n${e.toString()}\n${stack.toString()}############\n\n");
       throw HttpError.serverError;
     }
 

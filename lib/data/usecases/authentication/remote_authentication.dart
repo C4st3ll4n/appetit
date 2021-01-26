@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:meta/meta.dart';
 import '../../../data/models/remote_account_model.dart';
 
@@ -19,16 +21,20 @@ class RemoteAuthentication implements Authentication{
       final body =
           RemoteAuthenticationParams.fromDomain(authenticationParams).toJson();
       
-      Map response = await httpClient.request(url: url, method: 'post', body: body);
+      //Map response = await httpClient.request(url: url, method: 'post', body: body);
+      await Future.delayed(Duration(seconds: 2));
       
       /// MOCKANDO RESPOSTA DE AUTENTICAÇÃO
-      response = {"accessToken":"QWERTYYTREWQ"};
+      final response = {"accessToken":"QWERTYYTREWQ"};
       
       return RemoteAccountModel.fromJson(response).toEntity();
-    } on HttpError catch (error) {
+    } on HttpError catch (error, stack) {
+      log("\n\n ############\n${error.toString()}\n${stack.toString()}############\n\n");
       throw error == HttpError.unauthorized
           ? DomainError.invalidCredentials
           : DomainError.unexpected;
+    }catch(error, stack){
+      log("\n\n ############\n${error.toString()}\n${stack.toString()}############\n\n");
     }
   }
 }
