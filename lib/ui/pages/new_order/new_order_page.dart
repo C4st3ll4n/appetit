@@ -14,7 +14,10 @@ class NewOrderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: Builder(
+      bottomNavigationBar: Provider(
+          create: (BuildContext context) => presenter,
+          child: NewOrderBottomBar()),
+      /*Builder(
         builder: (_) {
           Widget widget  = Container(width: 0,height: 0,);
           presenter.showBottomBar.listen(
@@ -31,7 +34,7 @@ class NewOrderPage extends StatelessWidget {
           );
           return widget;
         },
-      ),
+      ),*/
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -95,7 +98,7 @@ class NewOrderPage extends StatelessWidget {
                   ),
                 ),
                 Flexible(
-                  flex: 3,
+                  flex: 10,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 10, vertical: 10),
@@ -111,7 +114,7 @@ class NewOrderPage extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  flex: 5,
+                  flex: 20,
                   child: Provider(
                     create: (ctx) => presenter,
                     child: ProductList(),

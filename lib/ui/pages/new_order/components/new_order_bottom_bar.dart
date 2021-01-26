@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 import '../new_order_presenter.dart';
@@ -21,7 +22,7 @@ class NewOrderBottomBar extends StatelessWidget {
             Text("Total: R\$ 3,25", style:textStyle ,),
             GestureDetector(
               onTap: (){
-              presenter.goToSelectClient();
+              Get.toNamed("/product_details");
               },
                 child: Text("Avançar >", style:textStyle,)),
           ],

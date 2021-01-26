@@ -26,7 +26,7 @@ class HttpAdapter implements HttpClient {
         response = await Future.delayed(
           Duration(seconds: 2),
           () {
-            if (random.boolean()) return Response("", 200);
+            if (random.integer(3)==0) return Response("", 200);
 
             return Response(null, random.integer(500, min: 400));
           },
