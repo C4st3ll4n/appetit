@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:fappetite/data/usecases/search_order/remote_search_order.dart';
 import 'package:fappetite/domain/usecases/sell.dart';
 import 'package:fappetite/ui/pages/home/home_presenter.dart';
@@ -11,18 +13,20 @@ import '../protocols/protocols.dart';
 import '../../domain/helpers/domain_error.dart';
 import '../../domain/usecases/search_order.dart';
 
-class GetXNewOrderPresenter extends GetxController implements NewOrderPresenter {
+class GetXNewOrderPresenter extends GetxController
+    implements NewOrderPresenter {
   final Sell sell;
 
   var _searchError = RxString();
   var _search = RxString();
   var _navigateTo = RxString();
-  var _dataStream = RxList<ProductEntity>([]);
-  
+  var _dataStream = RxList([]);
+
   var _isLoading = false.obs;
   var _shouldShowBottomBar = false.obs;
-  
-  var _selectedProducts = RxList<ProductEntity>([]);
+
+  var selectedProducts = RxList<ProductEntity>([]);
+  var totalPrice = 0.0.obs;
 
   GetXNewOrderPresenter({
     @required this.sell,
@@ -49,33 +53,38 @@ class GetXNewOrderPresenter extends GetxController implements NewOrderPresenter 
 
   @override
   void newSearch(String value) {
-    Future.delayed(Duration(seconds: 1),()async{
+    Future.delayed(Duration(seconds: 1), () async {
       _search.value = value;
-      if(_search.value.length >=3 == true)  search();
+      if (_search.value.length >= 3 == true) search();
     });
-    
   }
 
   @override
-  Future<void> search() async{
+  Future<void> search() async {
     _searchError.value = null;
     _isLoading.value = true;
     try {
-      final List<ProductEntity> orders =
-          await sell.listProduct(ProductParams(product: _search.value, observation: null, flavor: null, client: null));
+      final List<ProductEntity> orders = await sell.listProduct(ProductParams(
+          product: _search.value,
+          observation: null,
+          flavor: null,
+          client: null));
       _dataStream.assignAll(orders);
       _shouldShowBottomBar.value = true;
       return orders;
-      
-    } on DomainError catch (error) {
+    } on DomainError catch (error, stack) {
+      log("\n\n ############\n${error.toString()}\n${stack.toString()}############\n\n");
+
       _searchError.value = error.description;
+    } catch (error, stack) {
+      log("\n\n ############\n${error.toString()}\n${stack.toString()}############\n\n");
     } finally {
       _isLoading.value = false;
     }
   }
 
   @override
-  void goToHome(){
+  void goToHome() {
     _navigateTo.value = "/orders";
   }
 
@@ -89,16 +98,27 @@ class GetXNewOrderPresenter extends GetxController implements NewOrderPresenter 
 
   @override
   void goToSelectClient() {
-    _navigateTo.value="/order_client";
+    _navigateTo.value = "/order_client";
   }
-  
-  void toggleProduct(ProductEntity entity){
-    if(_selectedProducts.contains(entity)){
-      _selectedProducts.remove(entity);
-    }else{
-      _selectedProducts.add(entity);
+
+  void toggleProduct(ProductEntity entity) {
+    if (selectedProducts.contains(entity)) {
+      selectedProducts.remove(entity);
+    } else {
+      selectedProducts.add(entity);
     }
+    
+    _updatePrice();
   }
-  
-  bool contains(ProductEntity entity)=> _selectedProducts.contains(entity);
+
+  bool contains(ProductEntity entity) => selectedProducts.contains(entity);
+
+  void _updatePrice() {
+    double price = 0.0;
+    for (var value in selectedProducts) {
+      price += value.price;
+    }
+
+    totalPrice.value = price;
+  }
 }

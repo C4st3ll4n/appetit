@@ -1,15 +1,16 @@
+import 'package:fappetite/presentation/presenters/getx_new_order_presenter.dart';
+
 import 'client_item.dart';
 import 'package:flutter/material.dart';
 import 'package:group_list_view/group_list_view.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../domain/entities/entities.dart';
-import '../../new_order/new_order_presenter.dart';
 
 class ClientList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final presenter = Provider.of<NewOrderPresenter>(context);
+    final presenter = Provider.of<GetXNewOrderPresenter>(context);
     //presenter.search();
     return StreamBuilder<List>(
       stream: presenter.dataStream,

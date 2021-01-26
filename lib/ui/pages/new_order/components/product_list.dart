@@ -1,4 +1,5 @@
 import 'package:fappetite/domain/entities/product_entity.dart';
+import 'package:fappetite/presentation/presenters/getx_new_order_presenter.dart';
 import 'package:fappetite/ui/pages/new_order/new_order_presenter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,11 +11,13 @@ import '../../../components/product_item.dart';
 class ProductList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final presenter = Provider.of<NewOrderPresenter>(context);
+    final GetXNewOrderPresenter presenter = Provider.of<GetXNewOrderPresenter>(context);
     //presenter.search();
+    
     return StreamBuilder<List>(
       stream: presenter.dataStream,
       builder: (BuildContext bc, data) {
+        print(data);
         if (!data.hasData) {
           return ListTile(
             title: Text("Nenhum produto"),

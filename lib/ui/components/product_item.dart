@@ -13,7 +13,7 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final GetXNewOrderPresenter presenter = Provider.of<NewOrderPresenter>(context);
+    final GetXNewOrderPresenter presenter = Provider.of<GetXNewOrderPresenter>(context);
     NumberFormat formatter = NumberFormat.currency(
         locale: "pt_BR", name: "reais", symbol: "R\$", decimalDigits: 2);
     

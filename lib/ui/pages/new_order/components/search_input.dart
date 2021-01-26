@@ -9,7 +9,7 @@ import '../new_order_presenter.dart';
 class SearchInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final GetXNewOrderPresenter presenter = Provider.of<NewOrderPresenter>(context);
+    final GetXNewOrderPresenter presenter = Provider.of<GetXNewOrderPresenter>(context);
     final border = UnderlineInputBorder();
     return StreamBuilder<String>(
       stream: presenter.searchStream,

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:meta/meta.dart';
 import '../../http/http.dart';
 import '../../../domain/usecases/sell.dart';
@@ -15,9 +17,8 @@ class RemoteSell implements Sell {
     try {
       final body = RemoteSellParams.fromDomain(params).toJson();
   
-      Map response =
-      await httpClient.request(url: url, method: 'post', body: body);
-
+//      Map response =      await httpClient.request(url: url, method: 'post', body: body);
+      await Future.delayed(Duration(seconds: 1));
 
       return [
         ProductEntity(name: "Cuscuz simples", price: 02.25, category: "Cuscuz", options: ["Milho", "Arroz"], imageNetworkPath: "https://img.estadao.com.br/fotos/crop/960x540/resources/jpg/3/3/1565234690333.jpg"),
@@ -30,10 +31,15 @@ class RemoteSell implements Sell {
         ProductEntity(name: "Pão caseiro", price: 02.25, category: "Pão", imageNetworkPath: "https://cozinhalegal.com.br/files/receitas/684/Pao-caseiro-simples-8.jpg"),
       ];
       
-    } on HttpError catch (error) {
+    } on HttpError catch (error, stack) {
+      log("\n\n ############\n${error.toString()}\n${stack.toString()}############\n\n");
+  
       throw error == HttpError.unauthorized
           ? DomainError.invalidCredentials
           : DomainError.unexpected;
+    }catch(error, stack){
+      log("\n\n ############\n${error.toString()}\n${stack.toString()}############\n\n");
+  
     }
   }
 

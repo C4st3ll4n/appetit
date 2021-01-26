@@ -1,9 +1,10 @@
+import 'package:fappetite/domain/entities/entities.dart';
 import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class Sell{
 	Future make();
-	Future listProduct(ProductParams params);
+	Future<List<ProductEntity>> listProduct(ProductParams params);
 	Future listClient(ClientParams params);
 }
 

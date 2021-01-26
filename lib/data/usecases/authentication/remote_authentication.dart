@@ -22,6 +22,7 @@ class RemoteAuthentication implements Authentication{
           RemoteAuthenticationParams.fromDomain(authenticationParams).toJson();
       
       //Map response = await httpClient.request(url: url, method: 'post', body: body);
+      await Future.delayed(Duration(seconds: 2));
       
       /// MOCKANDO RESPOSTA DE AUTENTICAÇÃO
       final response = {"accessToken":"QWERTYYTREWQ"};
