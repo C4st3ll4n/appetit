@@ -44,7 +44,7 @@ class NewOrderPage extends StatelessWidget {
         leading: IconButton(
           onPressed: () {
             Get.back();
-            //presenter.goToHome();
+            presenter.goToHome();
           },
           icon: Icon(
             Icons.arrow_back_ios,
@@ -74,7 +74,7 @@ class NewOrderPage extends StatelessWidget {
           presenter.navigateToStream.listen((page) {
             if (page != null && page.trim().isNotEmpty) {
             log("#$page");
-              Get.offAndToNamed(page);
+            Get.offAllNamed(page);
             }
           });
 
