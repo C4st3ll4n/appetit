@@ -69,3 +69,30 @@ O apk fica disponível para download em:
 ### Screenshots
 
 Os prints das telas ficam disponível em:
+<table>
+  <tr>
+    <td><img src="screenshots/Screenshot_1.png" width=270 height=480></td>
+    <td><img src="screenshots/Screenshot_12.png" width=270 height=480></td>
+     <td><img src="screenshots/Screenshot_13.png" width=270 height=480></td>
+     <td><img src="screenshots/Screenshot_14.png" width=270 height=480></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/Screenshot_2.png" width=270 height=480></td>  
+  </tr>
+  <tr>
+    <td><img src="screenshots/Screenshot_3.png" width=270 height=480></td>
+    <td><img src="screenshots/Screenshot_31.png" width=270 height=480></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/Screenshot_4.png" width=270 height=480></td>
+    <td><img src="screenshots/Screenshot_41.png" width=270 height=480></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/Screenshot_5.png" width=270 height=480></td>
+    <td><img src="screenshots/Screenshot_51.png" width=270 height=480></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/Screenshot_6.png" width=270 height=480></td>  
+  </tr>
+ </table>
+
