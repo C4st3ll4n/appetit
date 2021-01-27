@@ -102,7 +102,7 @@ class NewOrderPage extends StatelessWidget {
                   ),
                 ),
                 Flexible(
-                  flex: 10,
+                  flex: 20,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 10, vertical: 10),
@@ -118,7 +118,7 @@ class NewOrderPage extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  flex: 20,
+                  flex: MediaQuery.of(context).size.height > 500 ? 60 : 20,
                   child: Provider(
                     create: (ctx) => presenter,
                     child: ProductList(),
