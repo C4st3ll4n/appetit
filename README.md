@@ -65,6 +65,8 @@ flutter test
 
 O apk fica disponível para download em:
 
+<a id="raw-url" href="https://github.com/C4st3ll4n/appetit/raw/main/app.apk">Download App</a>
+
 
 ### Screenshots
 
