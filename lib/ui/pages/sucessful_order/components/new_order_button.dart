@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class NewOrderButton extends StatelessWidget {
+  final Function onTap;
+
+  const NewOrderButton({Key key, this.onTap}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ButtonTheme(
@@ -18,7 +21,7 @@ class NewOrderButton extends StatelessWidget {
           child: Text(
             "Finalizar".toUpperCase(),
           ),
-          onPressed: () {}),
+          onPressed:onTap),
     );
   }
 }
