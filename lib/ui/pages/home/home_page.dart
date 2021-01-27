@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget {
             presenter.navigateToStream.listen(
               (page) {
                 if (page != null && page.trim().isNotEmpty) {
-                  Get.offAndToNamed(page);
+                  Get.offAllNamed(page);
                 }
               },
             );

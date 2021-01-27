@@ -43,6 +43,9 @@ class App extends StatelessWidget {
         ), GetPage(
           name: "/finish_order",
           page: makeFinishOrderPage,
+        ),GetPage(
+          name: "/successful_order",
+          page: makeSuccessfulOrderPage,
         ),
       ],
     );

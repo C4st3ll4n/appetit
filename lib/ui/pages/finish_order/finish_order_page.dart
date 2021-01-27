@@ -49,7 +49,7 @@ class FinishOrderPage extends StatelessWidget {
           });
           presenter.navigateToStream.listen((page) {
             if (page != null && page.trim().isNotEmpty) {
-              Get.toNamed(page);
+              Get.offAllNamed(page);
             }
           });
           return Padding(
